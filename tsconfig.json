@@ -12,6 +12,12 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@env/*" : ["src/environments/*"],
+      "@home/*": ["src/app/core/home/*"],
+      "@assets/*" : ["src/assets/*"],
+      "@b3d/core/b3dcore/*":["src/app/core/b3dcore/*"]
+    },
     "lib": [
       "es2017",
       "dom"
