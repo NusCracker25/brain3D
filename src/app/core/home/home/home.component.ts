@@ -14,7 +14,7 @@ export class HomeComponent {
     .pipe(
       map(result => result.matches)
     );
-    
+
   constructor(private breakpointObserver: BreakpointObserver) {}
-  
-  }
+
+}

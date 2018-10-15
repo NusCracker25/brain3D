@@ -16,6 +16,9 @@ import {
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { IntroductionComponent } from './introduction/introduction.component';
+import { CreditsComponent } from './credits/credits.component';
+import { JoinComponent } from './join/join.component';
 
 @NgModule({
   imports: [
@@ -34,7 +37,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [
     LoaderComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    IntroductionComponent,
+    CreditsComponent,
+    JoinComponent
   ],
   exports: [
     LoaderComponent,

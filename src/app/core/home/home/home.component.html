@@ -8,9 +8,18 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/home/#']" routerLinkActive="router-link-active">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item [routerLink]="['/home/intro']" routerLinkActive="router-link-active">
+        <mat-icon>person_add</mat-icon>
+        <span>Mind Map 3D</span>
+      </a>
+      <a mat-list-item [routerLink]="['/home/start']" routerLinkActive="router-link-active">
+        <mat-icon>person_add</mat-icon>
+        <span>Map it</span>
+      </a>
+      <a mat-list-item [routerLink]="['/home/credits']" routerLinkActive="router-link-active">
+        <mat-icon>copyright</mat-icon>
+        <span>Credits</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -23,7 +32,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>brain3D</span>
+      <span>B3D</span>
     </mat-toolbar>
 
     <router-outlet ></router-outlet>

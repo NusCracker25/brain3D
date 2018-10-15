@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from '@home/home.module';
+import { B3dcoreModule } from '@b3d/core/b3dcore/b3dcore.module';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { HomeModule } from '@home/home.module';
     BrowserModule,
     HomeModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    B3dcoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
