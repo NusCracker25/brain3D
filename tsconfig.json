@@ -14,9 +14,10 @@
     ],
     "paths": {
       "@env/*" : ["src/environments/*"],
-      "@home/*": ["src/app/core/home/*"],
+      "@home/*": ["src/app/features/home/*"],
       "@assets/*" : ["src/assets/*"],
-      "@b3d/core/b3dcore/*":["src/app/core/b3dcore/*"]
+      "@core/*":["src/app/core/*"],
+      "@shared/*":["src/app/shared/*"]
     },
     "lib": [
       "es2017",
