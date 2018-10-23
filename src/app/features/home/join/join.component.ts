@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  MatSnackBar,
-  MatFormFieldModule
+  MatSnackBar
  } from '@angular/material';
 import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormsModule,
-  NgForm
+  FormControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import {AuthenticationService} from '@b3d/core/b3dcore/services/authentication.service';
+import {AuthenticationService} from '@core/services/authentication.service';
 
 
 @Component({
@@ -22,17 +20,20 @@ import {AuthenticationService} from '@b3d/core/b3dcore/services/authentication.s
 })
 
 export class JoinComponent implements OnInit {
+
+
+
   username: String = 'someone';
-  password: String = 'secret';
+  _password: String = 'secret';
 
   loginForm: FormGroup;
   email = '';
-  Password: String = '';
-  IsAccepted = 0;
+  password: String = '';
+  isAccepted = 0;
 
   constructor(
     private authenticateService: AuthenticationService,
-    private snackBar: MatSnackBar,
+    // private snackBar: MatSnackBar,
     private formbuilder: FormBuilder,
     private router: Router
   ) {
@@ -69,11 +70,8 @@ export class JoinComponent implements OnInit {
     };
     console.log('tries to log with ' + user);
     // next here is to make the authenticate User a promise
-    this.authenticateService.signIn(user.email, user.password).subscribe(
+    this.authenticateService.loginUser(user.email, user.password).subscribe(
       response => {
-        console.log('received token: ' + response.token);
-        this.authenticateService.doSignIn(response.token, response.name);
-        console.log('all signed... navigating to next');
         this.router.navigate(['/profile']);
       },
       error => {

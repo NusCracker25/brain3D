@@ -28,8 +28,7 @@ export class UserHttpService {
   getUsers(): Observable<User[]> {
     const url = 'http://localhost:3000/users';
     return this.http.get<User[]>(url).pipe(
-      // map((e:Response)=> e.json()),
-      catchError((e: HttpErrorResponse)=> this.handleError(e))
+      catchError((e: HttpErrorResponse) => this.handleError(e))
    );
 
   }
@@ -37,14 +36,13 @@ export class UserHttpService {
   putUser(user): Observable<User> {
     const url = 'http://localhost:3000/users';
     // assume user can be added, more test to be done on email address and so...
-    console.log('request for all users');
     const body = JSON.stringify(user);
     // return this.http.post<User>(url,body);
     return this.http.post<User>(url, body, this.httpOptions)
     .pipe(
       // map((e:Response)=> e.json()),
       catchError((e: HttpErrorResponse) => this.handleError(e))
-   );
+    );
   }
 
   getProfile(user: User): User {
@@ -55,21 +53,32 @@ export class UserHttpService {
     }
   }
 
-    // error handling
-    private handleError(error: HttpErrorResponse) {
-      this.snackBar.open('we had an issue !' + error.error.message, null, { duration: 2000 });
-      if (error.error instanceof ErrorEvent) {
-        // A client-side or network error occurred. Handle it accordingly.
-        console.error('An error occurred:', error.error.message);
-      } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
-        console.error(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.error}`);
-      }
-      // return an observable with a user-facing error message
-      return throwError(
-        'Something bad happened; please try again later.');
+  public signIn(username: string, password: string): Observable<any>{
+    return this.http.post( 'http://localhost:3000/sign-in', {
+      username,
+      password
+    })
+    .pipe(
+      map((e: Response) => e.json()),
+      catchError((e: HttpErrorResponse) => this.handleError(e))
+   );
+  }
+
+  // error handling
+  private handleError(error: HttpErrorResponse) {
+    this.snackBar.open('we had an issue !' + error.error.message, null, { duration: 2000 });
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
     }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
 }

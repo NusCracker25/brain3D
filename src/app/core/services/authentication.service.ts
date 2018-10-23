@@ -12,7 +12,7 @@ import {
 
 import { User } from '@core/definition/user';
 import { SessionManagerService } from './session-manager.service';
-import { MatSnackBar } from '@angular/material';
+import { UserHttpService } from './user-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,60 +20,30 @@ import { MatSnackBar } from '@angular/material';
 export class AuthenticationService {
 
   constructor(
-    private http: HttpClient,
+    private user_serv: UserHttpService,
     private session: SessionManagerService,
-    private snackBar: MatSnackBar
   ) { }
 
 
-  loginUser (user: User): boolean {
+  loginUser (user: User , password: string): Observable<User>{
     console.log('user is logged '  + user.username);
-    this.isLogged = true;
-    this.user = user;
-    return true;
+    return this.user_serv.signIn(user.username, password)
+    .pipe(
+      map( (response) => {
+        console.log('received token: ' + response.token);
+        this.session.createSession(response.token, user);
+        return user;
+      })
+    );
   }
 
-  logout(): boolean {
-    console.log('user is logged out ' + this.user.username);
-    this.isLogged = false;
-    return true;
+  logout(): void {
+    this.session.destroySession();
   }
 
 
   registerUser(username, password): Observable<User> {
-    let result = null;
-    const usert = { username: username, password: password };
-    this.putUser(usert);
-    result = { success: true, username: username };
-
+    const user = this.user_serv.putUser({ username: username, password: password });
+    return user;
   }
-
-
-
-  putUser(user): Observable <any> {
-    const url = 'http://localhost:3000/users';
-    // assume user can be added, more test to be done on email address and so...
-    console.log('request for all users');
-    const body = JSON.stringify(user);
-    // return this.http.post<User>(url,body);
-    return this.http.post<User>(url, body, this.httpOptions)
-    .pipe(
-      // map((e:Response)=> e.json()),
-      catchError((e:HttpErrorResponse)=> this.handleError(e))
-   );
-  }
-
-  public signIn(username: string, password: string): Observable<any>{
-    return this.http.post( 'http://localhost:3000/sign-in',{
-      username,
-      password
-    })
-    .pipe(
-      // map((e:Response)=> e.json()),
-      catchError((e: HttpErrorResponse) => this.handleError(e))
-   );
-  }
-
-
-
 }

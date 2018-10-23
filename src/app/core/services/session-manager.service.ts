@@ -27,6 +27,7 @@ export class SessionManagerService {
   destroySession(): void {
     this.authToken = null;
     this.user = null;
+    this.islogged = false;
     localStorage.clear();
   }
 

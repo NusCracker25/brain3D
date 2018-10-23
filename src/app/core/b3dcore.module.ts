@@ -7,10 +7,13 @@ import { SecurityTknService } from './services/security-tkn.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   declarations: [],
   providers: [
@@ -23,7 +26,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     }
   ],
   exports: [
-    User
+
   ]
 })
 export class B3dcoreModule { }

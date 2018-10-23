@@ -12,12 +12,12 @@ const routes: Routes = [
       component: HomeComponent,
       children: [
         {
-          path: 'credits',
-          component: CreditsComponent
+          path: '',
+          component: IntroductionComponent
         },
         {
-          path: 'intro',
-          component: IntroductionComponent
+          path: 'credits',
+          component: CreditsComponent
         },
         {
           path: 'start',
