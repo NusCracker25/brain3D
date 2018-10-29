@@ -26,8 +26,8 @@ export class AuthenticationService {
 
 
   loginUser (user: User , password: string): Observable<User>{
-    console.log('user is logged '  + user.username);
-    return this.user_serv.signIn(user.username, password)
+    console.log('user is being logged '  + user.username);
+    return this.user_serv.signIn(user, password)
     .pipe(
       map( (response) => {
         console.log('received token: ' + response.token);

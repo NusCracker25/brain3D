@@ -53,13 +53,15 @@ export class UserHttpService {
     }
   }
 
-  public signIn(username: string, password: string): Observable<any>{
+  public signIn(user: User, password: string): Observable<any>{
+    console.log('username ' +  user.username + 'password: ' + password);
+    const uname = user.username;
     return this.http.post( 'http://localhost:3000/sign-in', {
-      username,
-      password
+      username: uname,
+      password: password
     })
     .pipe(
-      map((e: Response) => e.json()),
+      // map((response: Response) => e.json()),
       catchError((e: HttpErrorResponse) => this.handleError(e))
    );
   }

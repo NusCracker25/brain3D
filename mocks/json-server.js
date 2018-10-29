@@ -17,13 +17,14 @@ server.use(bodyParser.json());
 server.post('/sign-in', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log("sig in with "+req);
+    console.log("sig in with "+req.body.username);
     //if id and password are matching, then we send back the token
     if(username === 'demo' && password === 'demo') {
       res.json({
         name: username,
         token: jwtToken
       });
+      console.log("user has been recognized and token is sent");
       return;
     }
     //otherwise user is informed about the failure
@@ -43,7 +44,7 @@ server.use((req, res, next) => {
       return;
     }
   });
-  
+
   // Check whether request is allowed
   function isAuthorized(req) {
     let bearer = req.get('Authorization');

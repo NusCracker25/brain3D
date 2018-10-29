@@ -8,12 +8,12 @@ import { JoinComponent } from '@home/join/join.component';
 
 const routes: Routes = [
     {
-      path: 'home',
+      path: '',
       component: HomeComponent,
       children: [
         {
           path: '',
-          component: IntroductionComponent
+          component: IntroductionComponent,
         },
         {
           path: 'credits',
@@ -24,10 +24,22 @@ const routes: Routes = [
           component: JoinComponent
         },
         {
+          path: 'join',
+          component: JoinComponent
+        },
+        {
+          path: 'user',
+          loadChildren: '../user/user.module#UserModule'
+        },
+        {
           path: '404',
           component: NotFoundComponent
         }
       ]
+    },
+    {
+      path: 'user',
+      loadChildren: '../features/user/user.module#UserModule'
     },
     {
       path: '**',

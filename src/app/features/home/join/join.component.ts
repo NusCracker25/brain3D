@@ -9,6 +9,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '@core/definition/user';
 
 import {AuthenticationService} from '@core/services/authentication.service';
 
@@ -64,15 +65,15 @@ export class JoinComponent implements OnInit {
   ngOnInit() {}
 
   onLoginSubmit() {
-    const user = {
-      email: this.loginForm.get('Email').value,
-      password: this.loginForm.get('Password').value
-    };
-    console.log('tries to log with ' + user);
+    const user = new User();
+    user.username = this.loginForm.get('Email').value;
+    const password = this.loginForm.get('Password').value;
+
+    console.log('tries to log with ' + user.username);
     // next here is to make the authenticate User a promise
-    this.authenticateService.loginUser(user.email, user.password).subscribe(
+    this.authenticateService.loginUser(user, password).subscribe(
       response => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['home/user/profile']);
       },
       error => {
         console.log(error);
