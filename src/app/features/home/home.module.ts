@@ -30,6 +30,7 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { CreditsComponent } from './credits/credits.component';
 import { JoinComponent } from './join/join.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UserModule } from '@features/user/user.module';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatSidenavModule,
     MatListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserModule
   ],
   declarations: [
     HomeComponent,

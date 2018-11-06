@@ -25,6 +25,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRoutingModule } from './user-routing.module';
 
 import { Mm3dModule } from '@shared/mm3d/mm3d.module';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { B3dcoreModule } from '@core/b3dcore.module';
 
 @NgModule({
   imports: [
@@ -43,11 +45,16 @@ import { Mm3dModule } from '@shared/mm3d/mm3d.module';
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
-    Mm3dModule
+    Mm3dModule,
+    B3dcoreModule
 
   ],
   declarations: [
-    UserProfileComponent
+    UserProfileComponent,
+    UserMenuComponent
+  ],
+  exports: [
+    UserMenuComponent
   ]
 })
 export class UserModule { }
