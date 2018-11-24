@@ -31,6 +31,7 @@ import { CreditsComponent } from './credits/credits.component';
 import { JoinComponent } from './join/join.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserModule } from '@features/user/user.module';
+import { ThreeDModule } from '@features/m3d/threeD/threeD.module';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { UserModule } from '@features/user/user.module';
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
-    UserModule
+    UserModule,
+    ThreeDModule
   ],
   declarations: [
     HomeComponent,

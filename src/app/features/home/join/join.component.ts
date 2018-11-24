@@ -23,7 +23,7 @@ import {AuthenticationService} from '@core/services/authentication.service';
 export class JoinComponent implements OnInit {
 
 
-
+  show = false;
   username: String = 'someone';
   _password: String = 'secret';
 

@@ -1,7 +1,5 @@
  <h3> Start creating your Memory Castle</h3>
 
-
-
 <div class="col s12">
     <form [formGroup]="loginForm"  >
 
@@ -15,7 +13,7 @@
         <br>
         <mat-form-field>
             <input matInput formControlName="Password"placeholder="Enter your password" [type]="show ? 'text': 'password'">
-            <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-icon matSuffix (click)="show = !show">{{this.show ? 'visibility' : 'visibility_off'}}</mat-icon>
         </mat-form-field>
         <mat-error>
             <span *ngIf="!loginForm.get('Password').valid && loginForm.get('Password').touched">A Password is required</span>

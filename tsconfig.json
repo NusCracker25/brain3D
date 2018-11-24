@@ -13,6 +13,7 @@
       "node_modules/@types"
     ],
     "paths": {
+      "*": ["types/*"],
       "@env/*" : ["src/environments/*"],
       "@home/*": ["src/app/features/home/*"],
       "@assets/*" : ["src/assets/*"],

@@ -8,12 +8,15 @@ import { SecurityTknService } from './services/security-tkn.service';
 import {HttpClientModule} from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material';
+import { MapConcept } from './definition/map-concept';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     MatSnackBarModule
+    // User,
+    // MapConcept
   ],
   declarations: [],
   providers: [
@@ -26,7 +29,8 @@ import { MatSnackBarModule } from '@angular/material';
     }
   ],
   exports: [
-
+    // User,
+    // MapConcept
   ]
 })
 export class B3dcoreModule { }

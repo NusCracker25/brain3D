@@ -5,6 +5,7 @@ import { NotFoundComponent } from '@home/not-found/not-found.component';
 import { CreditsComponent } from '@home/credits/credits.component';
 import { IntroductionComponent } from '@home/introduction/introduction.component';
 import { JoinComponent } from '@home/join/join.component';
+import { View3DComponent } from '@features/m3d/threeD/view3-d/view3-d.component';
 
 const routes: Routes = [
     {
@@ -20,8 +21,9 @@ const routes: Routes = [
           component: CreditsComponent
         },
         {
-          path: 'start',
-          component: JoinComponent
+          path: 'map',
+          component: View3DComponent
+          // loadChildren: '../m3d/threeD/threeD.module#ThreeDModule'
         },
         {
           path: 'join',
@@ -36,11 +38,16 @@ const routes: Routes = [
           component: NotFoundComponent
         }
       ]
-    },
-    {
-      path: 'user',
-      loadChildren: '../features/user/user.module#UserModule'
-    },
+    }
+    ,
+    // {
+    //   path: 'user',
+    //   loadChildren: '../user/user.module#UserModule'
+    // },
+    // {
+    //   path: 'map',
+    //   loadChildren: '../m3d/threeD/threeD.module#ThreeDModule'
+    // },
     {
       path: '**',
       redirectTo: 'home/404'

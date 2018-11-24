@@ -13,6 +13,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './features/home/home.module#HomeModule'
   },
+
   // {
   //   path: 'user',
   //   loadChildren: './features/user/user.module#UserModule'
