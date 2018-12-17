@@ -31,6 +31,7 @@ export class AuthenticationService {
     .pipe(
       map( (response) => {
         console.log('received token: ' + response.token);
+        console.log('user is ' + JSON.stringify(user));
         this.session.createSession(response.token, user);
         return user;
       })

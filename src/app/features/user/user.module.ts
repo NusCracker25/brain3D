@@ -45,8 +45,7 @@ import { B3dcoreModule } from '@core/b3dcore.module';
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
-    Mm3dModule,
-    B3dcoreModule
+    Mm3dModule
 
   ],
   declarations: [

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from './services/authentication.service';
 import { User } from './definition/user';
@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material';
 import { MapConcept } from './definition/map-concept';
+import { core } from '@angular/compiler';
 
 @NgModule({
   imports: [
@@ -33,4 +34,11 @@ import { MapConcept } from './definition/map-concept';
     // MapConcept
   ]
 })
-export class B3dcoreModule { }
+export class B3dcoreModule {
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(@Optional() @SkipSelf() core: B3dcoreModule) {
+    if (core) {
+      throw new Error('you should not import core module and therefore not run');
+    }
+  }
+ }

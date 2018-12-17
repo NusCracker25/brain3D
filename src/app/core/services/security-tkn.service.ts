@@ -29,6 +29,7 @@ export class SecurityTknService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     console.log('interception of request ' + request);
+    console.log('add auth token: ' + this.session.authToken);
     if (this.session.authToken != null) {
       request = request.clone({
         setHeaders: {

@@ -45,14 +45,6 @@ export class UserHttpService {
     );
   }
 
-  getProfile(user: User): User {
-    if (this.session.authToken != null) {
-      return this.session.user;
-    } else {
-      return null;
-    }
-  }
-
   public signIn(user: User, password: string): Observable<any>{
     console.log('username ' +  user.username + 'password: ' + password);
     const uname = user.username;

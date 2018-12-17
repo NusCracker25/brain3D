@@ -15,12 +15,13 @@ export class SessionManagerService {
   constructor() {}
 
   createSession(authToken: string, user: User) {
-    console.log('create session with jwt:' + authToken);
+    console.log('create session with jwt: ' + authToken);
     localStorage.setItem('id_token', authToken);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = authToken;
     this.user = user;
     this.islogged = true;
+    console.log(' session has been created with auth :' + this.authToken);
   }
 
   /** explicitely called upon logout action, otherwise tokens are persisted and local info are NOT deleted */
