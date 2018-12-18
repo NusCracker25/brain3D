@@ -60,7 +60,7 @@ export class UserHttpService {
 
   // error handling
   private handleError(error: HttpErrorResponse) {
-    this.snackBar.open('we had an issue !' + error.error.message, null, { duration: 2000 });
+    this.snackBar.open(`we had an issue ! ${error.error}`, null, { duration: 2000 });
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -73,6 +73,6 @@ export class UserHttpService {
     }
     // return an observable with a user-facing error message
     return throwError(
-      'Something bad happened; please try again later.');
+      `Something bad happened; please try again later. ${error.error}`);
   }
 }

@@ -1,13 +1,15 @@
-const jsonServer = require("json-server");
+const path = require('path');
+const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
+const router = jsonServer.router(path.join(__dirname,'db.json'));
 const middlewares = jsonServer.defaults();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 
 //static jwt token but it should be generated on user login: cf website  brain be project (routes/users.js)
 const jwtToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2l0ZVBvaW50IFJ" +
-  "lYWRlciJ9.sS4aPcmnYfm3PQlTtH14az9CGjWkjnsDyG_1ats4yYg";
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2l0ZVBvaW50IFJ' +
+  'lYWRlciJ9.sS4aPcmnYfm3PQlTtH14az9CGjWkjnsDyG_1ats4yYg';
+
 
 //use of standard middlewares CORS, static and so: defulat middleward from json
 server.use(middlewares);
@@ -32,6 +34,7 @@ server.post("/sign-in", (req, res) => {
   res.status(422).send("Invalid username and password");
   return;
 });
+
 
 //all other routes are protected
 // Protect other routes
@@ -59,6 +62,7 @@ function isAuthorized(req) {
   console.log('Access denied.');
   return false;
 }
+
 
 // API routes
 server.use(router);
