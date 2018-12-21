@@ -22,30 +22,49 @@ export class UserHttpService {
   constructor(
     private http: HttpClient,
     private snackBar: MatSnackBar,
-    private session: SessionManagerService
-  ) { }
+    ) { }
 
   getUsers(): Observable<User[]> {
     const url = 'http://localhost:3000/users';
-    return this.http.get<User[]>(url).pipe(
-      catchError((e: HttpErrorResponse) => this.handleError(e))
-   );
+    return this.http.get<User[]>(url)
+      .pipe(
+        map(
+          (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJSON(jsonItem))
+        ),
+        catchError((e: HttpErrorResponse) => this.handleError(e))
+      );
 
   }
 
-  putUser(user): Observable<User> {
+  getUser(id: string): Observable<User>{
+    const url = 'http://localhost:3000/users?id=' + id;
+    return this.http.get<User>(url)
+      .pipe(
+        map(
+          (json: Object) => User.fromJSON(json)
+        ),
+        catchError((e: HttpErrorResponse) => this.handleError(e))
+      );
+
+  }
+
+  putUser(user: User , password: string): Observable<User> {
     const url = 'http://localhost:3000/users';
     // assume user can be added, more test to be done on email address and so...
+    //const body = JSON.stringify(user) + '"password":' + password;
     const body = JSON.stringify(user);
+    console.log('body of put user request '+body);
     // return this.http.post<User>(url,body);
     return this.http.post<User>(url, body, this.httpOptions)
     .pipe(
-      // map((e:Response)=> e.json()),
+      map(
+        (json: Object) => User.fromJSON(json)
+      ),
       catchError((e: HttpErrorResponse) => this.handleError(e))
     );
   }
 
-  public signIn(user: User, password: string): Observable<any>{
+  public logIn(user: User, password: string): Observable<any>{
     console.log('username ' +  user.username + 'password: ' + password);
     const uname = user.username;
     return this.http.post( 'http://localhost:3000/sign-in', {
