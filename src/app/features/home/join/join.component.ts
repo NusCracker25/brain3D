@@ -22,7 +22,6 @@ import {AuthenticationService} from '@core/services/authentication.service';
 
 export class JoinComponent implements OnInit {
 
-
   show = false;
   username: String = 'someone';
   _password: String = 'secret';
@@ -65,19 +64,31 @@ export class JoinComponent implements OnInit {
   ngOnInit() {}
 
   onLoginSubmit() {
-    const user = new User();
-    user.username = this.loginForm.get('Email').value;
+    const userid = this.loginForm.get('Email').value;
+    const password = this.loginForm.get('Password').value;
+    console.log('tries to log in with ' + userid);
+    // next here is to make the authenticate User a promise
+    this.authenticateService.loginUser(userid, password)
+      .subscribe(
+        (response: User) => {
+          console.log(response.username + ' is now logged ');
+          this.router.navigate(['home/user/profile']);
+        }
+    );
+  }
+
+  onRegisterSubmit() {
+    const userid = this.loginForm.get('Email').value;
     const password = this.loginForm.get('Password').value;
 
-    console.log('tries to log with ' + user.username);
+    console.log('tries to register with ' + userid);
     // next here is to make the authenticate User a promise
-    this.authenticateService.loginUser(user, password).subscribe(
-      response => {
-        this.router.navigate(['home/user/profile']);
-      },
-      error => {
-        console.log(error);
-      }
+    this.authenticateService.registerUser(userid, password)
+      .subscribe(
+        (response: User) => {
+          console.log(response.username + ' is now registered and lo ');
+          this.router.navigate(['home/user/profile']);
+        }
     );
   }
 }

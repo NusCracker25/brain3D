@@ -18,13 +18,13 @@ server.use(middlewares);
 server.use(bodyParser.json());
 
 server.post("/sign-in", (req, res) => {
-  const username = req.body.username;
+  const userid = req.body.userid;
   const password = req.body.password;
-  console.log("sign in with " + req.body.username);
+  console.log("sign in with " + req.body.userid);
   //if id and password are matching, then we send back the token
-  if (username === "demo" && password === "demo") {
+  if (userid === "demo" && password === "demo") {
     res.json({
-      name: username,
+      name: userid,
       token: jwtToken
     });
     console.log('App can now send request to back-end server.');

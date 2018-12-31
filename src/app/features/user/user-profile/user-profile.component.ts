@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
         }
       );
 
-    console.log('retrieves user information for ' + this.user);
+    console.log('retrieves user information for ' + this.user.username);
     console.log('all users are ' + this.users);
   }
 

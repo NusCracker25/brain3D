@@ -1,104 +1,14 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstName": "bob",
-      "username": "wxcw",
-      "email": "bob@gmail.com",
-      "password": "123456",
-      "preferences": {
-        "zoom": "100%"
-      },
-      "locus": {
-        "followed": [],
-        "private": [
-          {
-            "id": "1"
-          }
-        ]
-      },
-      "social": {
-        "groups": [],
-        "friend": []
-      }
+      "uid" :"1",
+      "username" : "demo",
+      "email" : "demo@d"
     },
     {
-      "id": "2",
-      "username": "qlkj",
-      "firstName": "bleu",
-      "email": "bob@gmail.com",
-      "password": "123456",
-      "preferences": {
-        "zoom": "100%"
-      },
-      "locus": {
-        "followed": [],
-        "private": [
-          {
-            "id": "1"
-          }
-        ]
-      },
-      "social": {
-        "groups": [],
-        "friend": []
-      }
-    },
-    {
-      "id": "3",
-      "username": "fqsdfqze",
-      "firstName": "bleu",
-      "email": "qb@gmail.com",
-      "password": "1234546",
-      "preferences": {
-        "zoom": "100%"
-      },
-      "locus": {
-        "followed": [],
-        "private": [
-          {
-            "id": "1"
-          }
-        ]
-      },
-      "social": {
-        "groups": [],
-        "friend": []
-      }
-    },
-    {
-      "id": "WFIQTdX"
-    },
-    {
-      "email": "a@a.com",
-      "password": "123456",
-      "id": "Exv3SKC"
-    },
-    {
-      "email": "b@b.com",
-      "password": "123456",
-      "id": "0ETzk0p"
-    },
-    {
-      "email": "c@c.com",
-      "password": "123456",
-      "id": "HeAlHqv"
-    },
-    {
-      "username": "r@r.com",
-      "password": "123456",
-      "id": "Za3ojia"
+      "uid" :"2",
+      "username" : "bob",
+      "email" : "bob@d"
     }
-  ],
-  "locus": [
-    {
-      "id": "1",
-      "locci": [
-        {
-          "id": 1
-        }
-      ]
-    }
-  ],
-  "locci": []
+  ]
 }
