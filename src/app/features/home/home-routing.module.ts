@@ -38,11 +38,11 @@ const routes: Routes = [
           component: NotFoundComponent
         }
       ]
-    }
-    ,
-    // {
-    //   path: 'user',
-    //   loadChildren: '../user/user.module#UserModule'
+    },
+    // ,
+    //  {
+    //    path: 'user',
+    //    loadChildren: '../user/user.module#UserModule'
     // },
     // {
     //   path: 'map',

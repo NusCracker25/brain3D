@@ -3,12 +3,18 @@
     {
       "uid" :"1",
       "username" : "demo",
-      "email" : "demo@d"
+      "email" : "demo@d",
+      "preferences": {
+        "navigation":"map"
+      }
     },
     {
       "uid" :"2",
       "username" : "bob",
-      "email" : "bob@d"
+      "email" : "bob@d",
+      "preferences": {
+        "navigation":"orbit"
+      }
     }
   ]
 }

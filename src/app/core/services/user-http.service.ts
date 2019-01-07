@@ -5,7 +5,6 @@ import { Observable, throwError, pipe } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 
 import { User } from '../definition/user';
-import { SessionManagerService } from './session-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +35,7 @@ export class UserHttpService {
 
   }
 
-  getUser(id: string): Observable<User>{
+  getUser(id: string): Observable<User> {
     const url = 'http://localhost:3000/users?id=' + id;
     return this.http.get<User>(url)
       .pipe(
@@ -51,9 +50,8 @@ export class UserHttpService {
   putUser(user: User , password: string): Observable<User> {
     const url = 'http://localhost:3000/users';
     // assume user can be added, more test to be done on email address and so...
-    //const body = JSON.stringify(user) + '"password":' + password;
+    // const body = JSON.stringify(user) + '"password":' + password;
     const body = JSON.stringify(user);
-    console.log('body of put user request '+body);
     // return this.http.post<User>(url,body);
     return this.http.post<User>(url, body, this.httpOptions)
     .pipe(
@@ -64,9 +62,8 @@ export class UserHttpService {
     );
   }
 
-  public logIn(user: User, password: string): Observable<any>{
-    console.log('username ' +  user.username + 'password: ' + password);
-    const uname = user.username;
+  public logIn(user: User, password: string): Observable<any> {
+   const uname = user.username;
     return this.http.post( 'http://localhost:3000/sign-in', {
       username: uname,
       password: password

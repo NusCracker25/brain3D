@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionManagerService } from '@core/services/session-manager.service';
 
 @Component({
   selector: 'app-view3-d',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class View3DComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private session: SessionManagerService
+  ) { }
 
   ngOnInit() {
   }

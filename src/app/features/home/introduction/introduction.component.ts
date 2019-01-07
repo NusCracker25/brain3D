@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionManagerService } from '@core/services/session-manager.service';
+import { UserHttpService } from '@core/services/user-http.service';
+
+import {User} from '@core/definition/user';
 
 @Component({
   selector: 'app-introduction',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroductionComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
+
+  constructor(
+    private session: SessionManagerService,
+    private user_http: UserHttpService
+    ) { }
 
   ngOnInit() {
+    if (this.session.islogged) {
+    this.user_http.getUsers()
+      .subscribe(
+        users => this.users = users
+      );
+    }
   }
 
 }

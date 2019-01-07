@@ -9,7 +9,9 @@ import {
   MatToolbarModule,
   MatSidenavModule,
   MatListModule,
-  MatInputModule
+  MatInputModule,
+  MatTooltipModule,
+  MatExpansionModule
 } from '@angular/material';
 import {
   FormsModule,
@@ -39,12 +41,13 @@ import { B3dcoreModule } from '@core/b3dcore.module';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    // LayoutModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTooltipModule,
+    MatExpansionModule,
     Mm3dModule
 
   ],

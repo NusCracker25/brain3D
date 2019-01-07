@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionManagerService } from '@core/services/session-manager.service';
+import { User } from '@core/definition/user';
 
 @Component({
   selector: 'app-user-menu',

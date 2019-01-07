@@ -15,7 +15,7 @@ export class SessionManagerService {
 
   constructor() {}
 
-  createSession(authToken: string, user: User){
+  createSession(authToken: string, user: User) {
     console.log('create session with jwt: ' + authToken);
     localStorage.setItem('id_token', authToken);
     localStorage.setItem('user', JSON.stringify(user));

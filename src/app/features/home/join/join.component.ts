@@ -33,7 +33,7 @@ export class JoinComponent implements OnInit {
 
   constructor(
     private authenticateService: AuthenticationService,
-    // private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private formbuilder: FormBuilder,
     private router: Router
   ) {
@@ -66,13 +66,14 @@ export class JoinComponent implements OnInit {
   onLoginSubmit() {
     const userid = this.loginForm.get('Email').value;
     const password = this.loginForm.get('Password').value;
+    const user = new User(-1, userid , userid);
     console.log('tries to log in with ' + userid);
     // next here is to make the authenticate User a promise
-    this.authenticateService.loginUser(userid, password)
+    this.authenticateService.loginUser(user, password)
       .subscribe(
         (response: User) => {
-          console.log(response.username + ' is now logged ');
-          this.router.navigate(['home/user/profile']);
+          this.snackBar.open(`You are now logged in as ${response.username}`, null, { duration: 2000 });
+          this.router.navigate(['home']);
         }
     );
   }
@@ -80,10 +81,11 @@ export class JoinComponent implements OnInit {
   onRegisterSubmit() {
     const userid = this.loginForm.get('Email').value;
     const password = this.loginForm.get('Password').value;
+    const user = new User(-1, userid , userid);
 
     console.log('tries to register with ' + userid);
     // next here is to make the authenticate User a promise
-    this.authenticateService.registerUser(userid, password)
+    this.authenticateService.registerUser(user, password)
       .subscribe(
         (response: User) => {
           console.log(response.username + ' is now registered and lo ');

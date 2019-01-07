@@ -1,33 +1,50 @@
-<p>
-  user-profile works!
-</p>
-
 <div>
-<h1>Welcome back {{user.username}} </h1>
-
+  <h2>Welcome back {{ user.username }}!</h2>
 </div>
 
-<!-- <div class="container-grid"> -->
-    <!-- <mat-sidenav-container class="example-sidenav-container" hasBackdrop="false">
-        <mat-sidenav #sprof mode="side" disableClose="true" opened="true" fixedInViewport="true">
-            <mat-nav-list>
-                <a mat-list-item routerLink="./lmap">Web Locus and Map</a>
-                <a mat-list-item routerLink="./acc">Account</a>
-                <a mat-list-item routerLink="./hist">History</a>
-                <a mat-list-item routerLink="./settings">Preferences</a>
-                <a mat-list-item routerLink="./netw">Social</a>
-                <a mat-list-item routerLink="./mbox">Mail</a>
-                <a mat-list-item routerLink=".">Notification</a>
-            </mat-nav-list>
-        </mat-sidenav>
+<mat-expansion-panel hideToggle expanded="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Personal data
+    </mat-panel-title>
+    <mat-panel-description> Type your name and age </mat-panel-description>
+    <mat-icon>account_circle</mat-icon>
+  </mat-expansion-panel-header>
 
-        <mat-sidenav-content>
-            <div class="profile">
+  <mat-form-field> <input matInput placeholder="First name" /> </mat-form-field>
 
-                <router-outlet ></router-outlet>
+  <mat-form-field> <input matInput placeholder="Age" /> </mat-form-field>
+</mat-expansion-panel>
+<br>
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Preferences
 
-            </div>
+    </mat-panel-title>
+    <mat-panel-description>
+       Customize your experience
 
-        </mat-sidenav-content>
-    </mat-sidenav-container> -->
-<!-- </div> -->
+    </mat-panel-description>
+    <mat-icon>settings</mat-icon>
+  </mat-expansion-panel-header>
+
+  <mat-form-field> <input matInput placeholder="First name" /> </mat-form-field>
+
+  <mat-form-field> <input matInput placeholder="Age" /> </mat-form-field>
+</mat-expansion-panel>
+<br>
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Account </mat-panel-title>
+    <mat-panel-description>
+      Select your on boarding option
+      </mat-panel-description>
+    <mat-icon>credit_card</mat-icon>
+  </mat-expansion-panel-header>
+
+  <mat-form-field> <input matInput placeholder="First name" /> </mat-form-field>
+
+  <mat-form-field> <input matInput placeholder="Age" /> </mat-form-field>
+</mat-expansion-panel>
+

@@ -25,13 +25,18 @@ import {
   MatFormFieldModule
 } from '@angular/material/form-field';
 
-import { LayoutModule } from '@angular/cdk/layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
+
+//import { LayoutModule } from '@angular/cdk/layout';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { CreditsComponent } from './credits/credits.component';
 import { JoinComponent } from './join/join.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserModule } from '@features/user/user.module';
 import { ThreeDModule } from '@features/m3d/threeD/threeD.module';
+
+
 
 @NgModule({
   imports: [
@@ -44,14 +49,15 @@ import { ThreeDModule } from '@features/m3d/threeD/threeD.module';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    LayoutModule,
+   // LayoutModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
     UserModule,
-    ThreeDModule
+    ThreeDModule,
+    FlexLayoutModule
   ],
   declarations: [
     HomeComponent,

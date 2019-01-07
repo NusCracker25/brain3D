@@ -1,8 +1,9 @@
 <div class=" home container-canvas">
-  <app-universe >
+  <app-universe [control]="session.islogged ? 'session.user.preferences.navigation' : 'orbit'">
     <!-- <app-camera controls='app-control'></app-camera> -->
-    <app-box-three xw="100" yw="100" zw="100"></app-box-three>
-    <app-box-three xw="-200" yw="100" zw="100"></app-box-three>
-    <app-box-three xw="-200" yw="300" zw="100"></app-box-three>
+    <!-- <app-box-three px="100" py="100" pz="100"></app-box-three>
+    <app-box-three px="-200" py="100" pz="100"></app-box-three>
+    <app-box-three px="-200" py="300" pz="100"></app-box-three> -->
+    <app-mesh-json px="-200" py="300" pz="100"></app-mesh-json>
   </app-universe>
 </div>

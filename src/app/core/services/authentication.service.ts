@@ -29,7 +29,7 @@ export class AuthenticationService {
   ) { }
 
 
-  loginUser (user: User , password: string): Observable<User>{
+  loginUser (user: User , password: string): Observable<User> {
     console.log('AS: user is being logged '  + user.username);
     return this.userHttp.logIn(user, password)
       .pipe(
@@ -54,7 +54,7 @@ export class AuthenticationService {
         map( (response) => {
           console.log('received token: ' + JSON.stringify(response));
           console.log('user is ' + JSON.stringify(user));
-          //this.session.createSession(response.token, user);
+          // this.session.createSession(response.token, user);
           return user;
         })
       );

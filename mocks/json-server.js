@@ -18,9 +18,9 @@ server.use(middlewares);
 server.use(bodyParser.json());
 
 server.post("/sign-in", (req, res) => {
-  const userid = req.body.userid;
+  const userid = req.body.username;
   const password = req.body.password;
-  console.log("sign in with " + req.body.userid);
+  console.log("sign in with " + req.body.username);
   //if id and password are matching, then we send back the token
   if (userid === "demo" && password === "demo") {
     res.json({

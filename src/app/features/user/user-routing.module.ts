@@ -1,23 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { NotFoundComponent } from '@shared/mm3d/not-found/not-found.component';
-
+import { HomeGuard } from '@shared/guard/home.guards';
 
 const routes: Routes = [
     {
-      path: 'user',
+      path: '',
       component: UserProfileComponent,
-      children: [
-        {
-          path: '404',
-          component: NotFoundComponent
-        }
-      ]
-    },
-    {
-      path: '**',
-      redirectTo: 'user/404'
+      canActivate: [HomeGuard]
     }
 ];
 

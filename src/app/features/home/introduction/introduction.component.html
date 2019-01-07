@@ -1,3 +1,41 @@
-<p>
-  introduction works!
-</p>
+<p>introduction works!:</p>
+<div
+  *ngIf="session.islogged"
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutWrap
+  fxLayoutGap="0.5%"
+  fxLayoutAlign="center"
+>
+  <div
+    *ngFor="let user of users"
+    fxFlex="0 1 calc(33.3% - 32px)"
+    fxFlex.lt-md="0 1 calc(50% - 32px)"
+    fxFlex.lt-sm="100%"
+  >
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ user.username }}</mat-card-title>
+        <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
+          quos dignissimos. Voluptates labore veritatis optio ad ea officiis
+          tempora laboriosam soluta placeat deserunt, iure harum earum,
+          aspernatur nemo repudiandae sed eveniet atque aliquid. Mollitia,
+          maiores nihil id rerum accusantium voluptatum.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button> <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -12,6 +12,7 @@ export class UserProfileComponent implements OnInit {
 
   user: User = null;
   users: User[] = null;
+  step = 0;
 
   constructor(
     private sessionService: SessionManagerService,
@@ -33,4 +34,18 @@ export class UserProfileComponent implements OnInit {
     console.log('all users are ' + this.users);
   }
 
+
+
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 }

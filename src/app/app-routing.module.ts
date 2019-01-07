@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { NotFoundComponent } from '@shared/mm3d/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -13,14 +13,13 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './features/home/home.module#HomeModule'
   },
-
-  // {
-  //   path: 'user',
-  //   loadChildren: './features/user/user.module#UserModule'
-  // },
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
   {
     path: '**',
-    redirectTo: '404'
+    redirectTo: 'home'
     // component: NotFoundComponent
   }
 ];
