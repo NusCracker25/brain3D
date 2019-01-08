@@ -11,6 +11,7 @@ import { AddToSceneDirective } from './directives/add-to-scene.directive';
 import { CameraComponent } from './camera/camera.component';
 import { MeshJSONComponent } from './mesh-json/mesh-json.component';
 import { ThreeObjectComponent } from './three-object/three-object.component';
+import { MeshSTLComponent } from './mesh-stl/mesh-stl.component';
 
 
 /**
@@ -33,7 +34,8 @@ import { ThreeObjectComponent } from './three-object/three-object.component';
     AddToSceneDirective,
     CameraComponent,
     MeshJSONComponent,
-    ThreeObjectComponent
+    ThreeObjectComponent,
+    MeshSTLComponent
   ],
   exports: [
     View3DComponent

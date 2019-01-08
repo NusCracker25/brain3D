@@ -1,7 +1,7 @@
 export class MapConcept {
-   public px: number;
-   public py: number;
-   public pz: number;
+   public px: 0;
+   public py: 0;
+   public pz: 0;
 
   public static fromJSON(json: Object): MapConcept {
     // TODO actual implementation must be improved with dictionary maintenance to avoid memory leak on concept creation

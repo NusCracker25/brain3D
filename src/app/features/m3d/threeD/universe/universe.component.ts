@@ -62,19 +62,20 @@ export class UniverseComponent implements OnInit, AfterViewInit {
 
   @ContentChildren(ThreeObjectComponent) boxes: QueryList<ThreeObjectComponent>;
 
-
   /* environment texture */
-  public texture = '/assets/wrld/textures/crate.jpg';
   @Input()
   public sky = 'clouds';
 
   constructor() {}
 
   //////////////// Initialization
-  ngOnInit() {}
+  ngOnInit() {
+   // this.getAspectRatio();
+
+  }
 
   public ngAfterViewInit() {
-    console.log(' ngOnInit/Universe contenu: ' + this.boxes.length);
+    // console.log(' ngOnInit/Universe contenu: ' + this.boxes.length);
     // build scene
     this.initializeScenes();
     // then engage rendering loop with animation
@@ -84,9 +85,10 @@ export class UniverseComponent implements OnInit, AfterViewInit {
   private initializeScenes() {
     // set
     this.htmlDivCanvas = this.canvas;
-    this.aspectRatio =
-      (window.innerWidth * this.screenSize) /
-      (window.innerHeight * this.screenSize);
+    // this.aspectRatio =
+    //   (window.innerWidth * this.screenSize) /
+    //   (window.innerHeight * this.screenSize);
+    this.getAspectRatio();
 
     // for all scene/renderes
     this.createCamera();
@@ -113,7 +115,8 @@ export class UniverseComponent implements OnInit, AfterViewInit {
       this.nearClippingPane,
       this.farClippingPane
     );
-    this.camera.position.set(-200, 200, 800);
+    // this.camera.position.set(-200, 200, 800);
+    this.camera.position.set( 100, 0, 20);
   }
 
   /* create renderer for non css element */
@@ -124,17 +127,20 @@ export class UniverseComponent implements OnInit, AfterViewInit {
 
     // definition of renderer settings
     this.renderer = new THREE.WebGLRenderer({
-      // canvas: can,
+      // canvas: this.htmlDivCanvas,
       antialias: true,
       alpha: true
     });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setClearColor(0x000000, 1);
+    // this.renderer.setSize(
+    //   window.innerWidth * this.screenSize,
+    //   window.innerHeight * this.screenSize
+    // );
     this.renderer.setSize(
-      window.innerWidth * this.screenSize,
-      window.innerHeight * this.screenSize
+      this.htmlDivCanvas.clientWidth * this.screenSize,
+      this.htmlDivCanvas.clientHeight * this.screenSize
     );
-
     // shadow
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // to antialias the shadow
@@ -147,7 +153,6 @@ export class UniverseComponent implements OnInit, AfterViewInit {
 
 public setControl(control: string) {
   // this.controls.camera = this.camera;
-  console.log('controls ' + this.control);
   if (control == null && control === undefined) {
     this.control = 'orbit';
   } else {
@@ -236,8 +241,9 @@ public setControl(control: string) {
     this.canvas.style.width = '100%';
     this.canvas.style.height = '100%';
     this.aspectRatio =
-      (window.innerWidth * this.screenSize) /
-      (window.innerHeight * this.screenSize);
+    (this.htmlDivCanvas.clientWidth * this.screenSize) /
+    (this.htmlDivCanvas.clientHeight * this.screenSize);
+
     return this.aspectRatio;
   }
 
@@ -278,8 +284,8 @@ public setControl(control: string) {
     this.camera.aspect = this.getAspectRatio();
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(
-      window.innerWidth * this.screenSize,
-      window.innerHeight * this.screenSize
+      this.htmlDivCanvas.clientWidth * this.screenSize,
+      this.htmlDivCanvas.clientHeight * this.screenSize
     );
     this.renderer.setPixelRatio(devicePixelRatio);
     // this.render();
