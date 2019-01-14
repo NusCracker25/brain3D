@@ -5,6 +5,7 @@ export class MapConcept {
 
   public static fromJSON(json: Object): MapConcept {
     // TODO actual implementation must be improved with dictionary maintenance to avoid memory leak on concept creation
+    console.log('creation d une map depuis ' + JSON.stringify(json));
     const concept = new MapConcept(
       json['uid'],
       json['name']
@@ -22,7 +23,7 @@ export class MapConcept {
   }
 
   constructor (
-    public id: number,
+    public uid: number,
     public name: string,
   ) {
 

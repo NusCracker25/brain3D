@@ -8,20 +8,25 @@ import {
   AfterViewInit,
   ContentChildren,
   ContentChild,
-  QueryList
+  QueryList,
+  AfterContentInit,
+  OnChanges,
+  DoCheck,
+  AfterContentChecked
 } from '@angular/core';
 import * as THREE from 'three-full';
 import { ControlDirective } from '../directives/control.directive';
 import { ThreeObjectComponent } from '../three-object/three-object.component';
 import { BoxThreeComponent } from '../box-three/box-three.component';
 import { NgControlStatus } from '@angular/forms';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-universe',
   templateUrl: './universe.component.html',
   styleUrls: ['./universe.component.css']
 })
-export class UniverseComponent implements OnInit, AfterViewInit {
+export class UniverseComponent implements OnInit , AfterViewInit, OnChanges {
   //////////////// REFERENCES TO HTML Native Elements
   private get canvas(): HTMLDivElement {
     return this.canvasRef.nativeElement;
@@ -71,7 +76,8 @@ export class UniverseComponent implements OnInit, AfterViewInit {
   //////////////// Initialization
   ngOnInit() {
    // this.getAspectRatio();
-
+   console.log('on Init');
+   console.log('contenu de la scene: ' + JSON.stringify(this.boxes));
   }
 
   public ngAfterViewInit() {
@@ -82,6 +88,14 @@ export class UniverseComponent implements OnInit, AfterViewInit {
     this.startRenderingLoop();
   }
 
+  public ngOnChanges(){
+    this.boxes.forEach(box => {
+      const mesh = box.createMesh();
+      console.log('creation de ' + box.name);
+      this.scene.add(mesh);
+      mesh.position.set(box.px, box.py, box.pz);
+    });
+  }
   private initializeScenes() {
     // set
     this.htmlDivCanvas = this.canvas;
@@ -100,8 +114,9 @@ export class UniverseComponent implements OnInit, AfterViewInit {
     console.log('contenu de la scene: ' + JSON.stringify(this.boxes));
     this.boxes.forEach(box => {
       const mesh = box.createMesh();
+      console.log('creation de ' + box.name);
       this.scene.add(mesh);
-      // mesh.position.set(box.xw, box.yw, box.zw);
+      mesh.position.set(box.px, box.py, box.pz);
     });
 
     this.renderer.render(this.scene, this.camera);

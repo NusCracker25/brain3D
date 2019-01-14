@@ -14,7 +14,49 @@
       "email" : "bob@d",
       "preferences": {
         "navigation":"orbit"
+      },
+      "plan":"free"
+    }
+    ,
+    {
+      "uid" :"3",
+      "username" : "joe",
+      "email" : "joe@mail.it",
+      "preferences": {
+        "navigation":"orbit"
       }
+    },
+
+    {
+      "uid" :"4",
+      "username" : "john",
+      "email" : "john@mail.it",
+      "preferences": {
+        "navigation":"orbit"
+      }
+    }
+  ],
+  "maps":[
+    {
+      "uid":"1",
+      "name":"toto",
+      "px":"1",
+      "py":"0",
+      "pz":"0"
+    },
+    {
+      "uid":"2",
+      "name":"titi",
+      "px":"1",
+      "py":"0",
+      "pz":"0"
+    },
+    {
+      "uid":"3",
+      "name":"tata",
+      "px":"1",
+      "py":"0",
+      "pz":"0"
     }
   ]
 }

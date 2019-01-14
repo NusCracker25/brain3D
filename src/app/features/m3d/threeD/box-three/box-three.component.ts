@@ -16,7 +16,7 @@ export class BoxThreeComponent extends ThreeObjectComponent implements OnInit {
     const texture1 = new THREE.TextureLoader().load('./assets/wrld/textures/crate.jpg');
     // let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const material = new THREE.MeshBasicMaterial({ map: texture1, side: THREE.DoubleSide });
-    const geometry = new THREE.BoxBufferGeometry(200, 500, 200);
+    const geometry = new THREE.BoxBufferGeometry(200, 200, 200);
 
     this.mesh = new THREE.Mesh(geometry, material);
     this.mesh.position.set(this.px, this.py, this.pz);

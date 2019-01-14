@@ -22,7 +22,7 @@ httpOptions = {
     private snackBar: MatSnackBar
   ) { }
 
-  getMaps(): Observable<MapConcept> {
+  getMaps(): Observable<MapConcept[]> {
     const url = 'http://localhost:3000/maps';
     return this.http.get<MapConcept[]>(url)
       .pipe(
@@ -31,6 +31,33 @@ httpOptions = {
         ),
         catchError((e: HttpErrorResponse) => this.handleError(e))
       );
+  }
+
+  getMap(id: string): Observable<MapConcept> {
+    const url = 'http://localhost:3000/maps?id=' + id;
+    return this.http.get<MapConcept>(url)
+      .pipe(
+        map(
+          (json: Object) => MapConcept.fromJSON(json)
+        ),
+        catchError((e: HttpErrorResponse) => this.handleError(e))
+      );
+
+  }
+
+  putMap(mapC: MapConcept): Observable<MapConcept> {
+    const url = 'http://localhost:3000/maps';
+    // assume user can be added, more test to be done on email address and so...
+    // const body = JSON.stringify(user) + '"password":' + password;
+    const body = JSON.stringify(mapC);
+    // return this.http.post<User>(url,body);
+    return this.http.post<MapConcept>(url, body, this.httpOptions)
+    .pipe(
+      map(
+        (json: Object) => MapConcept.fromJSON(json)
+      ),
+      catchError((e: HttpErrorResponse) => this.handleError(e))
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -1,10 +1,21 @@
 <div class=" home container-canvas">
-  <app-universe [control]="session.islogged ? 'session.user.preferences.navigation' : 'orbit'">
+  <app-universe
+    [control]="
+      session.islogged ? 'session.user.preferences.navigation' : 'orbit'
+    "
+  >
     <!-- <app-camera controls='app-control'></app-camera> -->
+    <app-box-three
+      *ngFor="let map of maps | async"
+      px="{{ map.px }}"
+      py="{{ map.py }}"
+      pz="{{ map.pz }}"
+      name="{{ map.name }}"
+    ></app-box-three>
     <!-- <app-box-three px="100" py="100" pz="100"></app-box-three>
     <app-box-three px="-200" py="100" pz="100"></app-box-three>
     <app-box-three px="-200" py="300" pz="100"></app-box-three> -->
-    <app-mesh-json px="-200" py="300" pz="100"></app-mesh-json>
+    <app-mesh-json px="0" py="0" pz="0"></app-mesh-json>
     <!-- <app-mesh-stl file="./assets/mdl/soline/brion.stl"></app-mesh-stl> -->
   </app-universe>
 </div>

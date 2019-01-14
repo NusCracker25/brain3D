@@ -11,10 +11,13 @@ export class ThreeStaticElement implements ThreeStaticMdl, ThreeMdl {
   @Input() py = 0;
   @Input() pz = 0;
 
+  @Input() name = 'truc';
+  @Input() uid = -1;
+
   mesh: THREE.Mesh;
 
   createMesh(): THREE.Mesh {
-    console.log('invoke ThreeStaticElement createMesh');
+    // console.log('invoke ThreeStaticElement createMesh');
     return null;
   }
 }

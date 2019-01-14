@@ -1,4 +1,4 @@
-import { connectableObservableDescriptor } from "rxjs/internal/observable/ConnectableObservable";
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 export class User {
   // isAnonym: boolean;
@@ -12,12 +12,12 @@ export class User {
     if (json.hasOwnProperty('preferences')) {
       user.setPreferencesFromJSON(json['preferences']);
     }
-    console.log('user preferences '+user.preferences.navigation);
+    console.log('user preferences ' + user.preferences.navigation);
     return user;
   }
 
   constructor(
-    public id: number,
+    public uid: number,
     public username: string,
     public email: string
   ) {

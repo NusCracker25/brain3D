@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { SessionManagerService } from '@core/services/session-manager.service';
+import { MapConcept } from '@core/definition/map-concept';
+import { MapHttpService } from '@core/services/map-http.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-view3-d',
@@ -8,11 +11,17 @@ import { SessionManagerService } from '@core/services/session-manager.service';
 })
 export class View3DComponent implements OnInit {
 
+  maps: Observable<MapConcept[]>;
+
   constructor(
-    private session: SessionManagerService
+    private session: SessionManagerService,
+    private maphttp: MapHttpService
   ) { }
 
   ngOnInit() {
+
+      this.maps = this.maphttp.getMaps();
+
   }
 
 }
