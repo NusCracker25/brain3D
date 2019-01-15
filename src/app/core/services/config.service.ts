@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Config } from '@core/definition/config';
 import { throwError, Observable } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,37 @@ import { catchError, retry } from 'rxjs/operators';
 export class ConfigService {
 
   configUrl = 'assets/config.json';
+  /**
+   * authentication token for the app
+   */
+  authToken: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  initialize() {
+    console.log('initialize app');
+    this.connectBackEnd().subscribe();
+  }
+
+  private connectBackEnd(): Observable<any> {
+    return this.http.post<any>( 'http://localhost:3000/' + 'auth', {
+      appid: 'mm3d',
+      appkey: '123456'
+    })
+    .pipe(
+      map( response => {
+        console.log('received token: ' + response);
+        if ( response && response.token) {
+        this.authToken = response.token;
+        }
+        return this.authToken;
+      }),
+      catchError((e: HttpErrorResponse) => this.handleError(e))
+   );
+  }
+
 
   getConfig() {
     return this.http.get<Config>(this.configUrl)

@@ -4,11 +4,18 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
 } from '@angular/common/http';
 
 import { SessionManagerService } from './session-manager.service';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { ConfigService } from './config.service';
+import { map, catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
+import { isUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +29,22 @@ import { Observable } from 'rxjs';
  * and hence monetize the transaction from back end side
  */
 export class SecurityTknService implements HttpInterceptor {
-  constructor(private session: SessionManagerService) {}
 
+  constructor(
+    private config: ConfigService
+    ) {}
+
+// all http request are intercepted
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     console.log('interception of request ' + request);
-    console.log('add auth token: ' + this.session.authToken);
-    if (this.session.authToken != null) {
+    console.log('add auth token: ' + this.config.authToken);
+    if (this.config.authToken != null) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.session.authToken}`
+          Authorization: `Bearer ${this.config.authToken}`
         }
       });
       return next.handle(request);

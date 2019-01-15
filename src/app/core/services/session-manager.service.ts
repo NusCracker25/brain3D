@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../definition/user';
 import { Observable } from 'rxjs';
+import { SecurityTknService } from './security-tkn.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,13 @@ export class SessionManagerService {
 
   user: User;
 
-  authToken: string;
+  private authToken: string;
 
   islogged = false;
 
-  constructor() {}
+  constructor(
+    private security: SecurityTknService
+  ) {}
 
   createSession(authToken: string, user: User) {
     console.log('create session with jwt: ' + authToken);

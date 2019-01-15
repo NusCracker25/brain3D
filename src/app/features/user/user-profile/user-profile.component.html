@@ -10,13 +10,19 @@
       <mat-panel-description> Type your name and age </mat-panel-description>
       <mat-icon>account_circle</mat-icon>
     </mat-expansion-panel-header>
+    <!-- <form [formGroup]="idForm" (ngSubmit)="onSubmitID()"> -->
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="First name"
+          value="{{ user.id.firstName }}"
+          formControlName="firstName"
+        />
+      </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="First name" />
-      {{ user.username }}</mat-form-field
-    >
-
-    <mat-form-field> <input matInput placeholder="Age" /> </mat-form-field>
+      <mat-form-field> <input matInput placeholder="Age" /> </mat-form-field>
+      <button mat-button type="submit" [disabled]="!idForm.valid">Submit</button>
+    <!-- </form> -->
   </mat-expansion-panel>
   <br />
 
@@ -128,9 +134,8 @@
           />
           <mat-card-content>
             <p>
-              SILVER allows you to create unlimited private maps
-              a 1Go storage is offered
-              you can create group of friends and share map with them
+              SILVER allows you to create unlimited private maps a 1Go storage
+              is offered you can create group of friends and share map with them
             </p>
           </mat-card-content>
           <mat-card-actions>

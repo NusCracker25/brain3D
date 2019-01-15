@@ -4,7 +4,32 @@ export class User {
   // isAnonym: boolean;
   // password: string;
   preferences: {
-    navigation: string;
+    navigation: 'map';
+    style: 'default'
+  };
+
+  id: {
+    firstName: string,
+    familyName: string,
+    birthday: Date,
+    avatar: string,
+    gender: number
+  };
+
+  address: {
+    street: string,
+    zipCode: number,
+    city: string,
+    country: string,
+    phone: '000-000-000-00'
+  };
+
+  rbac: {
+    plan: {
+      type: 1,
+      endsBy: Date
+    },
+    role: 'GUEST'
   };
 
   public static fromJSON(json: Object): User {
@@ -22,7 +47,8 @@ export class User {
     public email: string
   ) {
     this.preferences = {
-      navigation: 'orbit'
+      navigation: 'map',
+      style: 'default'
     };
   }
 
@@ -31,7 +57,7 @@ export class User {
       console.log('has navigation prop ' + json['navigation']);
       this.preferences.navigation = json['navigation'];
     } else {
-      this.preferences.navigation = 'orbit';
+      this.preferences.navigation = 'map';
     }
   }
 
