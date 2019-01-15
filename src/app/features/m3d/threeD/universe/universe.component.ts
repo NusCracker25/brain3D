@@ -26,7 +26,7 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
   templateUrl: './universe.component.html',
   styleUrls: ['./universe.component.css']
 })
-export class UniverseComponent implements OnInit , AfterViewInit, OnChanges {
+export class UniverseComponent implements OnInit , AfterViewInit {
   //////////////// REFERENCES TO HTML Native Elements
   private get canvas(): HTMLDivElement {
     return this.canvasRef.nativeElement;
@@ -63,7 +63,7 @@ export class UniverseComponent implements OnInit , AfterViewInit, OnChanges {
 
   /* 3D interactive world */
   private renderer: THREE.WebGLRenderer;
-  private scene: THREE.Scene;
+  scene: THREE.Scene;
 
   @ContentChildren(ThreeObjectComponent) boxes: QueryList<ThreeObjectComponent>;
 
@@ -88,14 +88,7 @@ export class UniverseComponent implements OnInit , AfterViewInit, OnChanges {
     this.startRenderingLoop();
   }
 
-  public ngOnChanges(){
-    this.boxes.forEach(box => {
-      const mesh = box.createMesh();
-      console.log('creation de ' + box.name);
-      this.scene.add(mesh);
-      mesh.position.set(box.px, box.py, box.pz);
-    });
-  }
+
   private initializeScenes() {
     // set
     this.htmlDivCanvas = this.canvas;
